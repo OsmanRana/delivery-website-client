@@ -1,17 +1,9 @@
 import React from "react";
-import { styled } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import { Container, Typography } from "@mui/material";
 
 const Footer = () => {
-  const Item = styled(Paper)(({ theme }) => ({
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-  }));
   return (
     <Box
       sx={{
@@ -31,7 +23,12 @@ const Footer = () => {
           sx={{ my: 8 }}
         >
           <Grid item xs={12} md={4}>
-            <Typography variant="h6" gutterBottom component="div" color="red">
+            <Typography
+              variant="h6"
+              gutterBottom
+              component="div"
+              color="#d21d24"
+            >
               About Company
             </Typography>
             <Typography variant="subtitle2" gutterBottom component="div">
@@ -51,7 +48,12 @@ const Footer = () => {
             </Typography>
           </Grid>
           <Grid item xs={12} md={4}>
-            <Typography variant="h6" gutterBottom component="div" color="red">
+            <Typography
+              variant="h6"
+              gutterBottom
+              component="div"
+              color="#d21d24"
+            >
               Services
             </Typography>
             <Typography variant="subtitle2" gutterBottom component="div">
@@ -85,7 +87,8 @@ const Footer = () => {
         </Grid>
         <hr />
         <Typography variant="subtitle2" gutterBottom component="div">
-        Copyright © 2022 express delivery. All rights reserved. Privacy Policy Terms and Condition  Return Policy
+          Copyright © 2022 express delivery. All rights reserved. Privacy Policy
+          Terms and Condition Return Policy
         </Typography>
       </Container>
     </Box>

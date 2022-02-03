@@ -93,7 +93,7 @@ const Navbar = () => {
                     sx={{
                       m: 2,
                       px: 2,
-                      color: "red",
+                      color: "#d21d24",
                       display: "block",
                       border: 1,
                     }}
@@ -107,11 +107,11 @@ const Navbar = () => {
                       px: 2,
                       color: "white",
                       display: "block",
-                      backgroundColor: "red",
+                      backgroundColor: "#d21d24",
                       "&:hover": {
                         backgroundColor: "white",
-                        color: "red",
-                        borderColor: "red",
+                        color: "#d21d24",
+                        borderColor: "#d21d24",
                         boxShadow: "none",
                         border: 1,
                       },
@@ -137,7 +137,7 @@ const Navbar = () => {
                     onClick={handleCloseNavMenu}
                     sx={{
                       m: 2,
-                      color: "red",
+                      color: "#d21d24",
                       display: "block",
                       textTransform: "none",
                       fontWeight: "bold",
@@ -151,13 +151,13 @@ const Navbar = () => {
                   sx={{
                     m: 2,
                     px: 2,
-                    color: "red",
+                    color: "#d21d24",
                     display: "block",
                     border: 1,
                     "&:hover": {
-                      backgroundColor: "red",
+                      backgroundColor: "#d21d24",
                       color: "white",
-                      borderColor: "red",
+                      borderColor: "#d21d24",
                     },
                   }}
                 >
@@ -170,11 +170,11 @@ const Navbar = () => {
                     px: 2,
                     color: "white",
                     display: "block",
-                    backgroundColor: "red",
+                    backgroundColor: "#d21d24",
                     "&:hover": {
                       backgroundColor: "white",
-                      color: "red",
-                      borderColor: "red",
+                      color: "#d21d24",
+                      borderColor: "#d21d24",
                     },
                   }}
                 >

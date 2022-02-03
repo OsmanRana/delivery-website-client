@@ -67,13 +67,13 @@ const SignUp = () => {
             p: 2,
             color: "white",
             display: "block",
-            backgroundColor: "red",
+            backgroundColor: "#d21d24",
             maxWidth: 180,
             border: 1,
             "&:hover": {
               backgroundColor: "white",
-              color: "red",
-              borderColor: "red",
+              color: "#d21d24",
+              borderColor: "#d21d24",
               boxShadow: "none",
             },
           }}
