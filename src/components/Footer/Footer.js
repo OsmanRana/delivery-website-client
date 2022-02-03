@@ -22,11 +22,13 @@ const Footer = () => {
       }}
     >
       <Container>
+        <hr />
         <Grid
           container
           rowSpacing={1}
           columnSpacing={{ xs: 1, sm: 2, md: 3 }}
           textAlign="left"
+          sx={{ my: 8 }}
         >
           <Grid item xs={12} md={4}>
             <Typography variant="h6" gutterBottom component="div" color="red">
@@ -72,9 +74,19 @@ const Footer = () => {
             </Typography>
           </Grid>
           <Grid item xs={12} md={4}>
-            <Item>2</Item>
+            <img src="./logo.png" alt="logo" width="100px" />
+            <Typography variant="subtitle2" gutterBottom component="div">
+              Call Us 09642 000 000
+            </Typography>
+            <Typography variant="subtitle2" gutterBottom component="div">
+              Email us support@expressdelivery.com
+            </Typography>
           </Grid>
         </Grid>
+        <hr />
+        <Typography variant="subtitle2" gutterBottom component="div">
+        Copyright © 2022 express delivery. All rights reserved. Privacy Policy Terms and Condition  Return Policy
+        </Typography>
       </Container>
     </Box>
   );
