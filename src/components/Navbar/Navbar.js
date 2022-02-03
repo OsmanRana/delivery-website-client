@@ -12,8 +12,9 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { grey } from "@mui/material/colors";
 
-const pages = ["Products", "Pricing", "Blog", "Login", "Register"];
+const pages = ["Home", "Tracking", "Services"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const Navbar = () => {
@@ -35,17 +36,16 @@ const Navbar = () => {
     setAnchorElUser(null);
   };
 
-  const darkTheme = createTheme({
+  const theme = createTheme({
     palette: {
-      mode: "dark",
       primary: {
-        main: "#1976d2",
+        main: grey[50],
       },
     },
   });
 
   return (
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={theme}>
       <AppBar position="static">
         <Container maxWidth="xl">
           <Toolbar disableGutters>
@@ -87,22 +87,98 @@ const Navbar = () => {
                     <Typography textAlign="center">{page}</Typography>
                   </MenuItem>
                 ))}
+                <Button
+                  onClick={handleCloseNavMenu}
+                  sx={{
+                    m: 2,
+                    px: 2,
+                    color: "red",
+                    display: "block",
+                    border: 1,
+                  }}
+                >
+                  Register
+                </Button>
+                <Button
+                  onClick={handleCloseNavMenu}
+                  sx={{
+                    m: 2,
+                    px: 2,
+                    color: "white",
+                    display: "block",
+                    backgroundColor: "red",
+                    "&:hover": {
+                      backgroundColor: "white",
+                      color: "red",
+                      borderColor: "red",
+                      boxShadow: "none",
+                      border: 1,
+                    },
+                  }}
+                >
+                  Login
+                </Button>
               </Menu>
             </Box>
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
               <img src="./logo.png" alt="logo" width="100px" />
             </Box>
 
-            <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: { xs: "none", md: "flex", justifyContent: "end" },
+              }}
+            >
               {pages.map((page) => (
                 <Button
                   key={page}
                   onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: "red", display: "block" }}
+                  sx={{
+                    m: 2,
+                    color: "red",
+                    display: "block",
+                    textTransform: "none",
+                    fontWeight: "bold",
+                  }}
                 >
                   {page}
                 </Button>
               ))}
+              <Button
+                onClick={handleCloseNavMenu}
+                sx={{
+                  m: 2,
+                  px: 2,
+                  color: "red",
+                  display: "block",
+                  border: 1,
+                  "&:hover": {
+                    backgroundColor: "red",
+                    color: "white",
+                    borderColor: "red",
+                  },
+                }}
+              >
+                Register
+              </Button>
+              <Button
+                onClick={handleCloseNavMenu}
+                sx={{
+                  m: 2,
+                  px: 2,
+                  color: "white",
+                  display: "block",
+                  backgroundColor: "red",
+                  "&:hover": {
+                    backgroundColor: "white",
+                    color: "red",
+                    borderColor: "red",
+                  },
+                }}
+              >
+                Login
+              </Button>
             </Box>
 
             <Box sx={{ flexGrow: 0 }}>
