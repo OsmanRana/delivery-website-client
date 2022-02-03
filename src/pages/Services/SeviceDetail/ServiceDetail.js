@@ -6,6 +6,8 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Grid } from "@mui/material";
+import { Link } from "react-router-dom";
+import "./ServicesDetails.css";
 
 const ServiceDetail = ({ service }) => {
   const { id, name, description, image } = service;
@@ -57,18 +59,19 @@ const ServiceDetail = ({ service }) => {
           >
             Book Now
           </Button>
-          <Button
-            // onClick={handleCloseNavMenu}
-            sx={{
-              m: 2,
-              px: 2,
-              color: "#d21d24",
-              display: "block",
-              border: 1,
-            }}
-          >
-            Learn More
-          </Button>
+          <Link className="text-decoration" to={`/services/${id}`}>
+            <Button
+              sx={{
+                m: 2,
+                px: 2,
+                color: "#d21d24",
+                display: "block",
+                border: 1,
+              }}
+            >
+              Learn More
+            </Button>
+          </Link>
         </CardActions>
       </Card>
     </Grid>
