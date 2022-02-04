@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 import "./ServicesDetails.css";
 
 const ServiceDetail = ({ service }) => {
-  const { id, name, description, image } = service;
+  const { _id, name, description, image } = service;
   return (
     <Grid
       item
@@ -59,7 +59,7 @@ const ServiceDetail = ({ service }) => {
           >
             Book Now
           </Button>
-          <Link className="text-decoration" to={`/services/${id}`}>
+          <Link className="text-decoration" to={`/services/${_id}`}>
             <Button
               sx={{
                 m: 2,

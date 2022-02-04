@@ -13,6 +13,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { grey } from "@mui/material/colors";
+import { Link } from "react-router-dom";
 
 const pages = ["Home", "Tracking", "Services"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -51,7 +52,9 @@ const Navbar = () => {
           <Container maxWidth="xl">
             <Toolbar disableGutters>
               <Box sx={{ mr: 2, display: { xs: "none", md: "flex" } }}>
-                <img src="./logo.png" alt="logo" width="100px" />
+                <Link to="/">
+                  <img src="./logo.png" alt="logo" width="100px" />
+                </Link>
               </Box>
 
               <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
