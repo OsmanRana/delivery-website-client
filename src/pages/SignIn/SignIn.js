@@ -40,7 +40,7 @@ const SignIn = () => {
         alignItems: "center",
         "& > :not(style)": {
           m: 16,
-          width: 800,
+          width: { xs: "100%", md: 800 },
           height: 800,
         },
       }}

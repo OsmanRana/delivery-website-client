@@ -16,7 +16,7 @@ const Services = () => {
           fontSize: { xs: 36 },
           textAlign: { xs: "center", md: "left" },
           my: 8,
-          pl: 4,
+          pl: { xs: "none", md: 4 },
           borderLeft: { xs: "none", md: 5 },
         }}
       >

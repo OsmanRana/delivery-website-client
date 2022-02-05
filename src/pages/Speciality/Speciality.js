@@ -7,8 +7,9 @@ const Speciality = () => {
   return (
     <Box
       sx={{
+        my: 16,
         backgroundColor: "#fafafa",
-        height: 800,
+        height: { md: 800 },
         display: "flex",
         alignItems: "center",
       }}
@@ -24,7 +25,7 @@ const Speciality = () => {
             fontSize: { xs: 36 },
             textAlign: { xs: "center", md: "left" },
             my: 8,
-            pl: 4,
+            pl: { xs: "none", md: 4 },
             borderLeft: { xs: "none", md: 5 },
           }}
         >
