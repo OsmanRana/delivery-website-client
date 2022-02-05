@@ -1,19 +1,13 @@
-import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import { Button, Container, Typography } from "@mui/material";
-import { useParams } from "react-router-dom";
+import useSingleService from "../../../hooks/useSingleService";
+import { Link } from "react-router-dom";
 
 const Service = () => {
-  const [service, setService] = useState([]);
-  const { name, description, image, slogan } = service;
-  const { serviceId } = useParams();
-  console.log(service);
-  useEffect(() => {
-    fetch(`https://obscure-hamlet-47725.herokuapp.com/services/${serviceId}`)
-      .then((res) => res.json())
-      .then((data) => setService(data));
-  }, [serviceId]);
+  const { service } = useSingleService();
+  const { _id, name, description, image, slogan } = service;
+
   return (
     <Container sx={{ height: "100%" }}>
       <Box
@@ -32,43 +26,57 @@ const Service = () => {
         <Paper
           elevation={3}
           sx={{
+            p: 4,
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
           }}
         >
-          <img src={image} alt="Delivery" width="100%" />
           <Typography
             variant="h1"
             component="div"
             gutterBottom
             fontWeight="bold"
-            sx={{ fontSize: { xs: 18 } }}
+            sx={{ fontSize: { xs: 18 }, mb: 2 }}
           >
             {slogan}
           </Typography>
-
-          <Button
-            fullWidth
-            sx={{
-              m: 2,
-              p: 2,
-              color: "white",
-              display: "block",
-              backgroundColor: "#d21d24",
-              maxWidth: 180,
-              border: 1,
-              "&:hover": {
-                backgroundColor: "white",
-                color: "#d21d24",
-                borderColor: "#d21d24",
-                boxShadow: "none",
-              },
-            }}
+          <img src={image} alt="Delivery" width="100%" height="400px" />
+          <Typography
+            variant="h1"
+            component="div"
+            gutterBottom
+            fontWeight="bold"
+            sx={{ fontSize: { xs: 36 }, my: 4 }}
           >
-            Book Now
-          </Button>
+            {name}
+          </Typography>
+          <Typography variant="body1" gutterBottom textAlign="left">
+            {description}
+          </Typography>
+          <Link to={`/booking/${_id}`} style={{ textDecoration: "none" }}>
+            <Button
+              fullWidth
+              sx={{
+                m: 2,
+                p: 2,
+                color: "white",
+                display: "block",
+                backgroundColor: "#d21d24",
+                maxWidth: 180,
+                border: 1,
+                "&:hover": {
+                  backgroundColor: "white",
+                  color: "#d21d24",
+                  borderColor: "#d21d24",
+                  boxShadow: "none",
+                },
+              }}
+            >
+              Book Now
+            </Button>
+          </Link>
         </Paper>
       </Box>
     </Container>

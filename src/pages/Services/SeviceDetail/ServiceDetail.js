@@ -11,7 +11,7 @@ import "./ServicesDetails.css";
 
 const ServiceDetail = ({ service }) => {
   const { _id, name, description, image } = service;
-  
+
   return (
     <Grid
       item
@@ -41,7 +41,7 @@ const ServiceDetail = ({ service }) => {
           </Typography>
         </CardContent>
         <CardActions>
-          <Link to="./booking" style={{ textDecoration: "none" }}>
+          <Link to={`/booking/${_id}`} style={{ textDecoration: "none" }}>
             <Button
               sx={{
                 m: 2,
