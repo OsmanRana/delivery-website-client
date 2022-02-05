@@ -10,7 +10,7 @@ const Service = () => {
   const { serviceId } = useParams();
   console.log(service);
   useEffect(() => {
-    fetch(`http://localhost:5000/services/${serviceId}`)
+    fetch(`https://obscure-hamlet-47725.herokuapp.com/services/${serviceId}`)
       .then((res) => res.json())
       .then((data) => setService(data));
   }, [serviceId]);
