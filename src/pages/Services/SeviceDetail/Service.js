@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 const Service = () => {
   const { service } = useSingleService();
+  console.log(service);
   const { _id, name, description, image, slogan } = service;
 
   return (

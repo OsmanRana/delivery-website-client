@@ -30,7 +30,7 @@ const useFirebase = () => {
         setAuthError("");
         const newUser = { email, diplayName: name };
         setUser(newUser);
-        const destination = location?.state?.from || "./";
+        const destination = location?.state?.from || "/";
         history.replace(destination);
       })
       .catch((error) => {

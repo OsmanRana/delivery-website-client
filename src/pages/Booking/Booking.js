@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 import useSingleService from "../../hooks/useSingleService";
 
 const Booking = () => {
-  const { service } = useSingleService();
-  const { _id, name, description, image, slogan } = service;
+  const { booking } = useSingleService();
+  console.log(booking);
+  const { _id, name, description, image, slogan } = booking;
   return (
     <Container sx={{ height: "100%" }}>
       <Box

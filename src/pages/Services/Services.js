@@ -4,6 +4,7 @@ import ServiceDetail from "./SeviceDetail/ServiceDetail";
 
 const Services = () => {
   const { services } = useServices();
+  
   return (
     <Container sx={{ flexGrow: 1, my: 16 }}>
       <Typography
