@@ -14,14 +14,13 @@ import MenuItem from "@mui/material/MenuItem";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { grey } from "@mui/material/colors";
 import { Link } from "react-router-dom";
-
-const pages = ["Home", "Tracking", "Services"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+import useAuth from "../../hooks/useServices/useAuth";
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
+  const { user, logOut } = useAuth();
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -35,6 +34,10 @@ const Navbar = () => {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+  };
+
+  const handleLogOut = () => {
+    logOut();
   };
 
   const theme = createTheme({
@@ -86,11 +89,30 @@ const Navbar = () => {
                     display: { xs: "block", md: "none" },
                   }}
                 >
-                  {pages.map((page) => (
-                    <MenuItem key={page} onClick={handleCloseNavMenu}>
-                      <Typography textAlign="center">{page}</Typography>
-                    </MenuItem>
-                  ))}
+                  <MenuItem onClick={handleCloseNavMenu}>
+                    <Link
+                      to="/"
+                      style={{ textDecoration: "none", color: "black" }}
+                    >
+                      <Typography textAlign="center">Home</Typography>
+                    </Link>
+                  </MenuItem>
+                  <MenuItem onClick={handleCloseNavMenu}>
+                    <Link
+                      to="/"
+                      style={{ textDecoration: "none", color: "black" }}
+                    >
+                      <Typography textAlign="center">Tracking</Typography>
+                    </Link>
+                  </MenuItem>
+                  <MenuItem onClick={handleCloseNavMenu}>
+                    <Link
+                      to="/services"
+                      style={{ textDecoration: "none", color: "black" }}
+                    >
+                      <Typography textAlign="center">Services</Typography>
+                    </Link>
+                  </MenuItem>
                   <Button
                     onClick={handleCloseNavMenu}
                     sx={{
@@ -103,29 +125,12 @@ const Navbar = () => {
                   >
                     Register
                   </Button>
-                  <Button
-                    onClick={handleCloseNavMenu}
-                    sx={{
-                      m: 2,
-                      px: 2,
-                      color: "white",
-                      display: "block",
-                      backgroundColor: "#d21d24",
-                      "&:hover": {
-                        backgroundColor: "white",
-                        color: "#d21d24",
-                        borderColor: "#d21d24",
-                        boxShadow: "none",
-                        border: 1,
-                      },
-                    }}
-                  >
-                    Login
-                  </Button>
                 </Menu>
               </Box>
               <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-                <img src="./logo.png" alt="logo" width="100px" />
+                <Link to="/">
+                  <img src="./logo.png" alt="logo" width="100px" />
+                </Link>
               </Box>
 
               <Box
@@ -134,21 +139,54 @@ const Navbar = () => {
                   display: { xs: "none", md: "flex", justifyContent: "end" },
                 }}
               >
-                {pages.map((page) => (
-                  <Button
-                    key={page}
-                    onClick={handleCloseNavMenu}
+                <Link
+                  to="/"
+                  style={{
+                    textDecoration: "none",
+                    color: "#d21d24",
+                  }}
+                >
+                  <Typography
                     sx={{
-                      m: 2,
-                      color: "#d21d24",
-                      display: "block",
-                      textTransform: "none",
+                      m: 3,
                       fontWeight: "bold",
                     }}
                   >
-                    {page}
-                  </Button>
-                ))}
+                    Home
+                  </Typography>
+                </Link>
+                <Link
+                  to="/tracking"
+                  style={{
+                    textDecoration: "none",
+                    color: "#d21d24",
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      m: 3,
+                      fontWeight: "bold",
+                    }}
+                  >
+                    Tracking
+                  </Typography>
+                </Link>
+                <Link
+                  to="/services"
+                  style={{
+                    textDecoration: "none",
+                    color: "#d21d24",
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      m: 3,
+                      fontWeight: "bold",
+                    }}
+                  >
+                    Services
+                  </Typography>
+                </Link>
                 <Button
                   onClick={handleCloseNavMenu}
                   sx={{
@@ -166,57 +204,93 @@ const Navbar = () => {
                 >
                   Register
                 </Button>
-                <Button
-                  onClick={handleCloseNavMenu}
-                  sx={{
-                    m: 2,
-                    px: 2,
-                    color: "white",
-                    display: "block",
-                    backgroundColor: "#d21d24",
-                    "&:hover": {
-                      backgroundColor: "white",
-                      color: "#d21d24",
-                      borderColor: "#d21d24",
-                    },
-                  }}
-                >
-                  Login
-                </Button>
               </Box>
 
-              <Box sx={{ flexGrow: 0 }}>
-                <Tooltip title="Open settings">
-                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar
-                      alt="Remy Sharp"
-                      src="/static/images/avatar/2.jpg"
-                    />
-                  </IconButton>
-                </Tooltip>
-                <Menu
-                  sx={{ mt: "45px" }}
-                  id="menu-appbar"
-                  anchorEl={anchorElUser}
-                  anchorOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  open={Boolean(anchorElUser)}
-                  onClose={handleCloseUserMenu}
-                >
-                  {settings.map((setting) => (
-                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                      <Typography textAlign="center">{setting}</Typography>
+              {user?.email ? (
+                <Box sx={{ flexGrow: 0 }}>
+                  <Tooltip title="Open settings">
+                    <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                      <Avatar
+                        alt="Remy Sharp"
+                        src="/static/images/avatar/2.jpg"
+                      />
+                    </IconButton>
+                  </Tooltip>
+                  <Menu
+                    sx={{ mt: "45px" }}
+                    id="menu-appbar"
+                    anchorEl={anchorElUser}
+                    anchorOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    open={Boolean(anchorElUser)}
+                    onClose={handleCloseUserMenu}
+                  >
+                    <MenuItem onClick={handleCloseUserMenu}>
+                      <Typography textAlign="center">Profile</Typography>
                     </MenuItem>
-                  ))}
-                </Menu>
-              </Box>
+                    <MenuItem onClick={handleCloseUserMenu}>
+                      <Typography textAlign="center">Account</Typography>
+                    </MenuItem>
+                    <MenuItem onClick={handleCloseUserMenu}>
+                      <Typography textAlign="center">Dashboard</Typography>
+                    </MenuItem>
+                    <Link
+                      style={{ textDecoration: "none" }}
+                      to="/signin"
+                      onClick={handleCloseUserMenu}
+                    >
+                      <Button
+                        onClick={handleLogOut}
+                        sx={{
+                          m: 2,
+                          px: 2,
+                          color: "white",
+                          display: "block",
+                          backgroundColor: "#d21d24",
+                          border: 1,
+                          "&:hover": {
+                            backgroundColor: "white",
+                            color: "#d21d24",
+                            borderColor: "#d21d24",
+                          },
+                        }}
+                      >
+                        Logout
+                      </Button>
+                    </Link>
+                  </Menu>
+                </Box>
+              ) : (
+                <Link
+                  style={{ textDecoration: "none" }}
+                  to="/signin"
+                  onClick={handleCloseUserMenu}
+                >
+                  <Button
+                    sx={{
+                      m: 2,
+                      px: 2,
+                      color: "white",
+                      display: "block",
+                      backgroundColor: "#d21d24",
+                      "&:hover": {
+                        backgroundColor: "white",
+                        color: "#d21d24",
+                        borderColor: "#d21d24",
+                      },
+                    }}
+                  >
+                    Login
+                  </Button>
+                </Link>
+              )}
             </Toolbar>
           </Container>
         </AppBar>

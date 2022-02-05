@@ -3,7 +3,7 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import { Container, Typography } from "@mui/material";
 
-const Footer = () => {
+const Footer = () => {  
   return (
     <Box
       sx={{

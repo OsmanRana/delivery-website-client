@@ -3,11 +3,16 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import { Alert, Button, Typography } from "@mui/material";
 import TextField from "@mui/material/TextField";
-import useFirebase from "../../hooks/useServices/useFibrebase";
+import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useServices/useAuth";
+import { useHistory } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const SignUp = () => {
   const [signUpData, setSignUpData] = useState({});
-  const { signUpNewUserWithEmailandPassword, authError, user } = useFirebase();
+  const { signUpNewUserWithEmailandPassword, authError, user } = useAuth();
+  const location = useLocation();
+  const history = useHistory();
   const handleOnBlur = (e) => {
     const field = e.target.name;
     const value = e.target.value;
@@ -20,7 +25,9 @@ const SignUp = () => {
     signUpNewUserWithEmailandPassword(
       signUpData.email,
       signUpData.password,
-      signUpData.name
+      signUpData.name,
+      location,
+      history
     );
     e.preventDefault();
   };
@@ -32,7 +39,7 @@ const SignUp = () => {
         justifyContent: "center",
         alignItems: "center",
         "& > :not(style)": {
-          m: 1,
+          m: 16,
           width: 800,
           height: 800,
         },
@@ -93,31 +100,37 @@ const SignUp = () => {
             onBlur={handleOnBlur}
             sx={{ maxWidth: 500, my: 4 }}
           />
-
-          <Button
-            fullWidth
-            type="submit"
+          <Box
             sx={{
-              m: 2,
-              p: 2,
-              color: "white",
-              display: "block",
-              backgroundColor: "#d21d24",
-              maxWidth: 180,
-              border: 1,
-              "&:hover": {
-                backgroundColor: "white",
-                color: "#d21d24",
-                borderColor: "#d21d24",
-                boxShadow: "none",
-              },
+              display: "flex",
+              justifyContent: "center",
             }}
           >
-            Sign up
-          </Button>
+            <Button
+              fullWidth
+              type="submit"
+              sx={{
+                m: 2,
+                p: 2,
+                color: "white",
+                display: "block",
+                backgroundColor: "#d21d24",
+                maxWidth: 180,
+                border: 1,
+                "&:hover": {
+                  backgroundColor: "white",
+                  color: "#d21d24",
+                  borderColor: "#d21d24",
+                  boxShadow: "none",
+                },
+              }}
+            >
+              Sign up
+            </Button>
+          </Box>
         </form>
         <Typography variant="caption" display="block" gutterBottom>
-          Already have an account? Sign In now
+          Already have an account? <Link to="/signin">Sign In</Link> now
         </Typography>
       </Paper>
     </Box>

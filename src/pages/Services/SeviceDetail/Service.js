@@ -18,13 +18,12 @@ const Service = () => {
     <Container sx={{ height: "100%" }}>
       <Box
         sx={{
-          my: 16,
           display: "flex",
           flexWrap: "wrap",
           justifyContent: "center",
           alignItems: "center",
           "& > :not(style)": {
-            m: 1,
+            m: 16,
             width: 800,
             height: 800,
           },
@@ -51,7 +50,6 @@ const Service = () => {
           </Typography>
 
           <Button
-            //   onClick={handleCloseNavMenu}
             fullWidth
             sx={{
               m: 2,

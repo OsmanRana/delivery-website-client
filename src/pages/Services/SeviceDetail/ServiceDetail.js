@@ -11,6 +11,7 @@ import "./ServicesDetails.css";
 
 const ServiceDetail = ({ service }) => {
   const { _id, name, description, image } = service;
+  
   return (
     <Grid
       item
@@ -40,25 +41,26 @@ const ServiceDetail = ({ service }) => {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button
-            // onClick={handleCloseNavMenu}
-            sx={{
-              m: 2,
-              px: 2,
-              color: "white",
-              display: "block",
-              backgroundColor: "#d21d24",
-              border: 1,
-              "&:hover": {
-                backgroundColor: "white",
-                color: "#d21d24",
-                borderColor: "#d21d24",
-                boxShadow: "none",
-              },
-            }}
-          >
-            Book Now
-          </Button>
+          <Link to="./booking" style={{ textDecoration: "none" }}>
+            <Button
+              sx={{
+                m: 2,
+                px: 2,
+                color: "white",
+                display: "block",
+                backgroundColor: "#d21d24",
+                border: 1,
+                "&:hover": {
+                  backgroundColor: "white",
+                  color: "#d21d24",
+                  borderColor: "#d21d24",
+                  boxShadow: "none",
+                },
+              }}
+            >
+              Book Now
+            </Button>
+          </Link>
           <Link className="text-decoration" to={`/services/${_id}`}>
             <Button
               sx={{
