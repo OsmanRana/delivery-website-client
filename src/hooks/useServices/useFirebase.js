@@ -4,6 +4,7 @@ import {
   signOut,
   signInWithEmailAndPassword,
   onAuthStateChanged,
+  updateProfile,
 } from "firebase/auth";
 import { useEffect, useState } from "react";
 import initializeAuthentication from "../../Firebase/firebase.init";
@@ -30,6 +31,11 @@ const useFirebase = () => {
         setAuthError("");
         const newUser = { email, diplayName: name };
         setUser(newUser);
+        updateProfile(auth.currentUser, {
+          displayName: name,
+        })
+          .then(() => {})
+          .catch((error) => {});
         const destination = location?.state?.from || "/";
         history.replace(destination);
       })
@@ -70,6 +76,7 @@ const useFirebase = () => {
       if (user) {
         setUser(user);
       } else setUser({});
+      setIsLoading(false);
     });
     return () => unsubscribed;
   }, [auth]);

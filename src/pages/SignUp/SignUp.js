@@ -39,7 +39,7 @@ const SignUp = () => {
         justifyContent: "center",
         alignItems: "center",
         "& > :not(style)": {
-          m: 16,
+          m: { xs: 0, md: 16 },
           width: 800,
           height: 800,
         },
@@ -110,7 +110,7 @@ const SignUp = () => {
               fullWidth
               type="submit"
               sx={{
-                m: 2,
+                m: { xs: 0, md: 2 },
                 p: 2,
                 color: "white",
                 display: "block",

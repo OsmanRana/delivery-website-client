@@ -10,6 +10,7 @@ import Services from "./pages/Services/Services";
 import AuthProvider from "./contexts/AuthProvider/AuthProvider";
 import Booking from "./pages/Booking/Booking";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import Tracking from "./pages/Booking/Tracking/Tracking";
 
 function App() {
   return (
@@ -32,6 +33,9 @@ function App() {
             </Route>
             <PrivateRoute exact path="/booking/:bookingId">
               <Booking></Booking>
+            </PrivateRoute>
+            <PrivateRoute exact path="/tracking">
+              <Tracking />
             </PrivateRoute>
             <Route exact path="/signin">
               <SignIn />
