@@ -8,7 +8,6 @@ const OfficeDelivery = () => {
   const { user } = useAuth();
   const { booking } = useSingleService();
   const [officeBookings, setOfficeBookings] = useState({});
-  console.log(officeBookings);
   const { name } = booking;
 
   const handleOnBlur = (e) => {
@@ -28,7 +27,7 @@ const OfficeDelivery = () => {
     // officeBookings.tracking = tracking;
     // officeBookings.bookingDate = bookingDate;
     // deliveryDate.bookingDate = bookingDate;
-    fetch("http://localhost:5000/officeBookings", {
+    fetch("https://infinite-headland-54248.herokuapp.com/officeBookings", {
       method: "POST",
       headers: {
         "content-type": "application/json",

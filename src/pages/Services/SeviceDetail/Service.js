@@ -1,11 +1,18 @@
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import { Button, Container, Typography } from "@mui/material";
-import useSingleService from "../../../hooks/useSingleService";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const Service = () => {
-  const { service } = useSingleService();
+  const [service, setService] = useState([]);
+  const { serviceId } = useParams();
+  useEffect(() => {
+    fetch(`https://infinite-headland-54248.herokuapp.com/services/${serviceId}`)
+      .then((res) => res.json())
+      .then((data) => setService(data));
+  }, [serviceId]);
   const { _id, name, description, image, slogan } = service;
 
   return (
