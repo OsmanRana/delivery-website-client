@@ -11,6 +11,7 @@ import AuthProvider from "./contexts/AuthProvider/AuthProvider";
 import Booking from "./pages/Booking/Booking";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import Tracking from "./pages/Booking/Tracking/Tracking";
+import UserDashboard from "./pages/UserDashBoard/UserDashboard";
 
 function App() {
   return (
@@ -36,6 +37,9 @@ function App() {
             </PrivateRoute>
             <PrivateRoute exact path="/tracking">
               <Tracking />
+            </PrivateRoute>
+            <PrivateRoute exact path="/userDeshboard">
+              <UserDashboard />
             </PrivateRoute>
             <Route exact path="/signin">
               <SignIn />

@@ -232,15 +232,14 @@ const Navbar = () => {
                     open={Boolean(anchorElUser)}
                     onClose={handleCloseUserMenu}
                   >
-                    <MenuItem onClick={handleCloseUserMenu}>
-                      <Typography textAlign="center">Profile</Typography>
-                    </MenuItem>
-                    <MenuItem onClick={handleCloseUserMenu}>
-                      <Typography textAlign="center">Account</Typography>
-                    </MenuItem>
-                    <MenuItem onClick={handleCloseUserMenu}>
-                      <Typography textAlign="center">Dashboard</Typography>
-                    </MenuItem>
+                    <Link
+                      style={{ textDecoration: "none", color: "black" }}
+                      to="/userDeshboard"
+                    >
+                      <MenuItem onClick={handleCloseUserMenu}>
+                        <Typography textAlign="center">Dashboard</Typography>
+                      </MenuItem>
+                    </Link>
                     <Link
                       style={{ textDecoration: "none" }}
                       to="/signin"

@@ -39,7 +39,7 @@ const SignIn = () => {
         justifyContent: "center",
         alignItems: "center",
         "& > :not(style)": {
-          m: 16,
+          m: { xs: 0, md: 16 },
           width: { xs: "100%", md: 800 },
           height: 800,
         },
