@@ -1,14 +1,20 @@
 import { Box, Button, Paper, TextField, Typography } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import useAuth from "../../hooks/useServices/useAuth";
-import useSingleService from "../../hooks/useSingleService";
 import ServiceOption from "./ServiceOption";
 
 const OfficeDelivery = () => {
   const { user } = useAuth();
-  const { booking } = useSingleService();
   const [officeBookings, setOfficeBookings] = useState({});
-  const { name } = booking;
+  const [booking, setBooking] = useState();
+  const { bookingId } = useParams();
+  
+  useEffect(() => {
+    fetch(`http://localhost:5000/booking/${bookingId}`)
+      .then((res) => res.json())
+      .then((data) => setBooking(data));
+  }, [bookingId]);
 
   const handleOnBlur = (e) => {
     const field = e.target.name;
@@ -19,15 +25,15 @@ const OfficeDelivery = () => {
   };
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    const status = "pending";
+    const status = "Pending";
     officeBookings.bookingStatus = status;
-    officeBookings.serviceName = name;
+    officeBookings.serviceName = booking?.name;
 
     // officeBookings.cost = cost;
     // officeBookings.tracking = tracking;
     // officeBookings.bookingDate = bookingDate;
     // deliveryDate.bookingDate = bookingDate;
-    fetch("https://infinite-headland-54248.herokuapp.com/officeBookings", {
+    fetch("http://localhost:5000/officeBookings", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -35,7 +41,11 @@ const OfficeDelivery = () => {
       body: JSON.stringify(officeBookings),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        if (data.insertedId) {
+          alert("Booking placed successfully");
+        }
+      });
   };
   return (
     <Box
@@ -70,7 +80,7 @@ const OfficeDelivery = () => {
           fontWeight="bold"
           sx={{ fontSize: { xs: 36 }, my: 4 }}
         >
-          {name}
+          {booking?.name}
         </Typography>
 
         <form onSubmit={handleOnSubmit}>

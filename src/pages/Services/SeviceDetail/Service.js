@@ -9,7 +9,7 @@ const Service = () => {
   const [service, setService] = useState([]);
   const { serviceId } = useParams();
   useEffect(() => {
-    fetch(`https://infinite-headland-54248.herokuapp.com/services/${serviceId}`)
+    fetch(`http://localhost:5000/services/${serviceId}`)
       .then((res) => res.json())
       .then((data) => setService(data));
   }, [serviceId]);
@@ -24,9 +24,10 @@ const Service = () => {
           justifyContent: "center",
           alignItems: "center",
           "& > :not(style)": {
-            m: 16,
+            m: { xs: 0, md: 16 },
+            my: { xs: 16 },
             width: 800,
-            height: 800,
+            maxHeight: 2000,
           },
         }}
       >
@@ -45,17 +46,17 @@ const Service = () => {
             component="div"
             gutterBottom
             fontWeight="bold"
-            sx={{ fontSize: { xs: 18 }, mb: 2 }}
+            sx={{ fontSize: { xs: 18 }, mb: 2, textAlign: { xs: "left" } }}
           >
             {slogan}
           </Typography>
-          <img src={image} alt="Delivery" width="100%" height="400px" />
+          <img src={image} alt="Delivery" width="100%" height="auto" />
           <Typography
             variant="h1"
             component="div"
             gutterBottom
             fontWeight="bold"
-            sx={{ fontSize: { xs: 36 }, my: 4 }}
+            sx={{ fontSize: { xs: 36 }, my: 4, textAlign: { xs: "left" } }}
           >
             {name}
           </Typography>
@@ -63,26 +64,33 @@ const Service = () => {
             {description}
           </Typography>
           <Link to={`/booking/${_id}`} style={{ textDecoration: "none" }}>
-            <Button
-              fullWidth
+            <Box
               sx={{
-                m: 2,
-                p: 2,
-                color: "white",
-                display: "block",
-                backgroundColor: "#d21d24",
-                maxWidth: 180,
-                border: 1,
-                "&:hover": {
-                  backgroundColor: "white",
-                  color: "#d21d24",
-                  borderColor: "#d21d24",
-                  boxShadow: "none",
-                },
+                display: "flex",
+                justifyContent: "center",
               }}
             >
-              Book Now
-            </Button>
+              <Button
+                fullWidth
+                sx={{
+                  m: 2,
+                  p: 2,
+                  color: "white",
+                  display: "block",
+                  backgroundColor: "#d21d24",
+                  maxWidth: 180,
+                  border: 1,
+                  "&:hover": {
+                    backgroundColor: "white",
+                    color: "#d21d24",
+                    borderColor: "#d21d24",
+                    boxShadow: "none",
+                  },
+                }}
+              >
+                Book Now
+              </Button>
+            </Box>
           </Link>
         </Paper>
       </Box>

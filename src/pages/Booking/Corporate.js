@@ -23,11 +23,10 @@ const Corporate = ({ open, handleClose, handleOnBlur }) => {
   return (
     <div>
       <TextField
-        id="query   "
-        label="Please let us kmow your requirements?"
+        id="query"
+        label="Your requirements?"
         name="query"
         type="query"
-        // value={user.diplayName}
         variant="outlined"
         fullWidth
         required

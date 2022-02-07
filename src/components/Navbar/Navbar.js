@@ -99,7 +99,7 @@ const Navbar = () => {
                   </MenuItem>
                   <MenuItem onClick={handleCloseNavMenu}>
                     <Link
-                      to="/"
+                      to="/tracking"
                       style={{ textDecoration: "none", color: "black" }}
                     >
                       <Typography textAlign="center">Tracking</Typography>

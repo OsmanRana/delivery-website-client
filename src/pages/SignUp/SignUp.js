@@ -104,6 +104,7 @@ const SignUp = () => {
             sx={{
               display: "flex",
               justifyContent: "center",
+              mb: 2,
             }}
           >
             <Button
