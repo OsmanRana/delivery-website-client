@@ -3,7 +3,6 @@ import React from "react";
 
 const PersonToPerson = ({ name, handleOnBlur }) => {
   //   const cost = parseInt(officeBookings.weight) * 50;
-  const tracking = Math.random().toFixed(5);
   const bookingDate = new Date().toLocaleString();
   const deliveryDate = new Date().toLocaleString();
   return (
@@ -112,9 +111,6 @@ const PersonToPerson = ({ name, handleOnBlur }) => {
         />
       )}
 
-      <Typography variant="body1" gutterBottom>
-        Tracking Number: {tracking}
-      </Typography>
       <Typography variant="body1" gutterBottom>
         Booking Date: {bookingDate}
       </Typography>

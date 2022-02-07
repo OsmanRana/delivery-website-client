@@ -9,12 +9,14 @@ const OfficeDelivery = () => {
   const [officeBookings, setOfficeBookings] = useState({});
   const [booking, setBooking] = useState();
   const { bookingId } = useParams();
-  
+
   useEffect(() => {
     fetch(`http://localhost:5000/booking/${bookingId}`)
       .then((res) => res.json())
       .then((data) => setBooking(data));
   }, [bookingId]);
+
+  const tracking = (Math.random().toFixed(4) * 10000).toString();
 
   const handleOnBlur = (e) => {
     const field = e.target.name;
@@ -30,7 +32,7 @@ const OfficeDelivery = () => {
     officeBookings.serviceName = booking?.name;
 
     // officeBookings.cost = cost;
-    // officeBookings.tracking = tracking;
+    officeBookings.tracking = tracking;
     // officeBookings.bookingDate = bookingDate;
     // deliveryDate.bookingDate = bookingDate;
     fetch("http://localhost:5000/officeBookings", {
@@ -43,7 +45,8 @@ const OfficeDelivery = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-          alert("Booking placed successfully");
+          alert(`Booking placed successfully. Tracking ${tracking}`);
+          window.location.reload();
         }
       });
   };
@@ -82,7 +85,9 @@ const OfficeDelivery = () => {
         >
           {booking?.name}
         </Typography>
-
+        <Typography variant="body1" gutterBottom>
+          Tracking Number: {tracking}
+        </Typography>
         <form onSubmit={handleOnSubmit}>
           <Typography variant="body1" gutterBottom>
             General Information
@@ -122,6 +127,7 @@ const OfficeDelivery = () => {
             onBlur={handleOnBlur}
             sx={{ maxWidth: 500, my: 4 }}
           />
+
           <ServiceOption handleOnBlur={handleOnBlur}></ServiceOption>
           <Box
             sx={{

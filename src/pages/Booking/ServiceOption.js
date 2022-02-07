@@ -16,7 +16,7 @@ const ServiceOption = ({ handleOnBlur }) => {
     setbookingName(newBooking);
   };
   return (
-    <Container sx={{ height: "100%" }}>
+    <Container sx={{ height: "100%", mt: 4 }}>
       <Box>
         <ToggleButtonGroup
           sx={{
