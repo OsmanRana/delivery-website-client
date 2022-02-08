@@ -12,6 +12,7 @@ import Booking from "./pages/Booking/Booking";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import Tracking from "./pages/Booking/Tracking/Tracking";
 import UserDashboard from "./pages/UserDashBoard/UserDashboard";
+import AdminDashboard from "./pages/AdminDashboard/AdminDashboard";
 
 function App() {
   return (
@@ -38,8 +39,11 @@ function App() {
             <PrivateRoute exact path="/tracking">
               <Tracking />
             </PrivateRoute>
-            <PrivateRoute exact path="/userDeshboard">
+            <PrivateRoute exact path="/userDashboard">
               <UserDashboard />
+            </PrivateRoute>
+            <PrivateRoute exact path="/adminDashboard">
+              <AdminDashboard />
             </PrivateRoute>
             <Route exact path="/signin">
               <SignIn />

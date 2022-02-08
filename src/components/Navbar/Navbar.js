@@ -89,6 +89,15 @@ const Navbar = () => {
                     display: { xs: "block", md: "none" },
                   }}
                 >
+                  <Typography
+                    sx={{
+                      ml: 2,
+                      fontWeight: "bold",
+                      color: "#d21d24",
+                    }}
+                  >
+                    {user?.displayName}
+                  </Typography>
                   <MenuItem onClick={handleCloseNavMenu}>
                     <Link
                       to="/"
@@ -113,18 +122,23 @@ const Navbar = () => {
                       <Typography textAlign="center">Services</Typography>
                     </Link>
                   </MenuItem>
-                  <Button
-                    onClick={handleCloseNavMenu}
-                    sx={{
-                      m: 2,
-                      px: 2,
-                      color: "#d21d24",
-                      display: "block",
-                      border: 1,
-                    }}
+                  <Link
+                    to="/adminDashboard"
+                    style={{ textDecoration: "none", color: "black" }}
                   >
-                    Register
-                  </Button>
+                    <Button
+                      onClick={handleCloseNavMenu}
+                      sx={{
+                        m: 2,
+                        px: 2,
+                        color: "#d21d24",
+                        display: "block",
+                        border: 1,
+                      }}
+                    >
+                      Admin Dashboard
+                    </Button>
+                  </Link>
                 </Menu>
               </Box>
               <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -187,33 +201,39 @@ const Navbar = () => {
                     Services
                   </Typography>
                 </Link>
-                <Button
-                  onClick={handleCloseNavMenu}
+                <Typography
                   sx={{
-                    m: 2,
-                    px: 2,
+                    m: 3,
+                    fontWeight: "bold",
                     color: "#d21d24",
-                    display: "block",
-                    border: 1,
-                    "&:hover": {
-                      backgroundColor: "#d21d24",
-                      color: "white",
-                      borderColor: "#d21d24",
-                    },
                   }}
                 >
-                  Register
-                </Button>
+                  {user?.displayName}
+                </Typography>
+                <Link
+                  to="/adminDashboard"
+                  style={{ textDecoration: "none", color: "black" }}
+                >
+                  <Button
+                    onClick={handleCloseNavMenu}
+                    sx={{
+                      m: 2,
+                      px: 2,
+                      color: "#d21d24",
+                      display: "block",
+                      border: 1,
+                    }}
+                  >
+                    Admin Dashboard
+                  </Button>
+                </Link>
               </Box>
 
               {user?.email ? (
                 <Box sx={{ flexGrow: 0 }}>
                   <Tooltip title="Open settings">
                     <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                      <Avatar
-                        alt="Remy Sharp"
-                        src="/static/images/avatar/2.jpg"
-                      />
+                      <Avatar alt={user?.displayName} src={user?.photoURL} />
                     </IconButton>
                   </Tooltip>
                   <Menu
@@ -234,7 +254,7 @@ const Navbar = () => {
                   >
                     <Link
                       style={{ textDecoration: "none", color: "black" }}
-                      to="/userDeshboard"
+                      to="/userDashboard"
                     >
                       <MenuItem onClick={handleCloseUserMenu}>
                         <Typography textAlign="center">Dashboard</Typography>

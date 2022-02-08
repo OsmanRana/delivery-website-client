@@ -22,7 +22,10 @@ const UserDashboard = () => {
         .then((data) => {
           if (data.deletedCount > 0) {
             alert("Booking deleted successfully");
-            window.location.reload();
+            const remainingBookings = bookings.filter(
+              (booking) => booking._id !== id
+            );
+            setBookings(remainingBookings)
           }
         });
     }

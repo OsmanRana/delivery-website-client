@@ -97,7 +97,7 @@ const OfficeDelivery = () => {
             label="Name"
             name="senderName"
             type="name"
-            value={user.diplayName}
+            value={user?.displayName}
             variant="outlined"
             fullWidth
             required
