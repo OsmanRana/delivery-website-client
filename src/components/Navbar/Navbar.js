@@ -210,23 +210,6 @@ const Navbar = () => {
                 >
                   {user?.displayName}
                 </Typography>
-                <Link
-                  to="/adminDashboard"
-                  style={{ textDecoration: "none", color: "black" }}
-                >
-                  <Button
-                    onClick={handleCloseNavMenu}
-                    sx={{
-                      m: 2,
-                      px: 2,
-                      color: "#d21d24",
-                      display: "block",
-                      border: 1,
-                    }}
-                  >
-                    Admin Dashboard
-                  </Button>
-                </Link>
               </Box>
 
               {user?.email ? (
@@ -253,12 +236,38 @@ const Navbar = () => {
                     onClose={handleCloseUserMenu}
                   >
                     <Link
-                      style={{ textDecoration: "none", color: "black" }}
                       to="/userDashboard"
+                      style={{ textDecoration: "none", color: "black" }}
                     >
-                      <MenuItem onClick={handleCloseUserMenu}>
-                        <Typography textAlign="center">Dashboard</Typography>
-                      </MenuItem>
+                      <Button
+                        onClick={handleCloseUserMenu}
+                        sx={{
+                          m: 2,
+                          px: 2,
+                          color: "#d21d24",
+                          display: "block",
+                          border: 1,
+                        }}
+                      >
+                        User Dashboard
+                      </Button>
+                    </Link>
+                    <Link
+                      to="/adminDashboard"
+                      style={{ textDecoration: "none", color: "black" }}
+                    >
+                      <Button
+                        onClick={handleCloseUserMenu}
+                        sx={{
+                          m: 2,
+                          px: 2,
+                          color: "#d21d24",
+                          display: "block",
+                          border: 1,
+                        }}
+                      >
+                        Admin Dashboard
+                      </Button>
                     </Link>
                     <Link
                       style={{ textDecoration: "none" }}
