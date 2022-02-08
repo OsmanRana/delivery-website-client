@@ -5,6 +5,7 @@ import { Container } from "@mui/material";
 import { Box } from "@mui/system";
 import Bookings from "./Bookings/Bookings";
 import Services from "./Services/Services";
+import AddServices from "./AddService/AddService";
 
 const AdminDashboardOptions = () => {
   const [alignment, setAlignment] = useState("bookings");
@@ -34,6 +35,7 @@ const AdminDashboardOptions = () => {
       <Box>
         {alignment === "bookings" && <Bookings></Bookings>}
         {alignment === "services" && <Services></Services>}
+        {alignment === "addServices" && <AddServices></AddServices>}
       </Box>
     </Container>
   );

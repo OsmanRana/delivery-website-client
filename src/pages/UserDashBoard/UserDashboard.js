@@ -1,4 +1,14 @@
-import { Button, Paper, Typography } from "@mui/material";
+import {
+  Button,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Typography,
+} from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import useAuth from "../../hooks/useServices/useAuth";
@@ -25,7 +35,7 @@ const UserDashboard = () => {
             const remainingBookings = bookings.filter(
               (booking) => booking._id !== id
             );
-            setBookings(remainingBookings)
+            setBookings(remainingBookings);
           }
         });
     }
@@ -55,25 +65,70 @@ const UserDashboard = () => {
           alignItems: "center",
         }}
       >
+        <Typography
+          variant="h1"
+          component="div"
+          gutterBottom
+          fontWeight="bold"
+          sx={{ fontSize: { xs: 18, sm: 36 } }}
+        >
+          Welcome {user?.displayName}
+        </Typography>
         {bookings?.length > 0 &&
           bookings?.map((booking) => {
             return (
-              <Box key={booking._id}>
-                <Box sx={{ display: "flex" }}>
-                  <Typography variant="body1" gutterBottom>
-                    {booking.serviceName}
-                  </Typography>
-                  <Typography variant="body1" gutterBottom>
-                    {booking.bookingStatus}
-                  </Typography>
-                  <Typography variant="body1" gutterBottom>
-                    {booking.tracking}
-                  </Typography>
-                  <Button onClick={() => handleDeleteBooking(booking._id)}>
-                    Delete
-                  </Button>
-                </Box>
-              </Box>
+              <TableContainer
+                sx={{ display: "flex", justifyContent: "center" }}
+              >
+                <Table sx={{ maxWidth: 650 }} aria-label="simple table">
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Booking Details</TableCell>
+                      <TableCell align="left">Action</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    <TableRow
+                      key={booking._id}
+                      sx={{
+                        "&:last-child td, &:last-child th": { border: 0 },
+                      }}
+                    >
+                      <TableCell component="th" scope="row">
+                        <span style={{ wordBreak: "break-all" }}>
+                          Email: {booking.senderEmail}
+                        </span>
+                        <br />
+                        Tracking: {booking.tracking}
+                      </TableCell>
+                      <TableCell component="th" scope="row">
+                        <Button
+                          onClick={() => handleDeleteBooking(booking._id)}
+                          sx={{
+                            px: 2,
+                            color: "#d21d24",
+                            display: "block",
+                            border: 1,
+                          }}
+                        >
+                          Cancel
+                        </Button>
+                        <Button
+                          sx={{
+                            mt: 2,
+                            px: 2,
+                            color: "#d21d24",
+                            display: "block",
+                            border: 1,
+                          }}
+                        >
+                          {booking.bookingStatus}
+                        </Button>
+                      </TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </TableContainer>
             );
           })}
       </Paper>
