@@ -10,16 +10,19 @@ import { Button } from "@mui/material";
 const Bookings = () => {
   const [bookings, setBookings] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/bookings")
+    fetch("https://infinite-headland-54248.herokuapp.com/bookings")
       .then((res) => res.json())
       .then((data) => setBookings(data));
   }, []);
   const handleDeleteBooking = (id) => {
     const proced = window.confirm("Confirm Delete");
     if (proced) {
-      fetch(`http://localhost:5000/officeBookings/${id}`, {
-        method: "DELETE",
-      })
+      fetch(
+        `https://infinite-headland-54248.herokuapp.com/officeBookings/${id}`,
+        {
+          method: "DELETE",
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           if (data.deletedCount > 0) {
@@ -33,7 +36,7 @@ const Bookings = () => {
     }
   };
   const handleStatusUpdate = (id) => {
-    fetch(`http://localhost:5000/bookings/${id}`, {
+    fetch(`https://infinite-headland-54248.herokuapp.com/bookings/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

@@ -16,7 +16,7 @@ const AddServices = () => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    // fetch(`http://localhost:5000/services`, {
+    // fetch(`https://infinite-headland-54248.herokuapp.com/services`, {
     //   method: "POST",
     //   heards: {
     //     "content-type": "application/json",

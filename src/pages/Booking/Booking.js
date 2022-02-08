@@ -11,7 +11,7 @@ const OfficeDelivery = () => {
   const { bookingId } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/booking/${bookingId}`)
+    fetch(`https://infinite-headland-54248.herokuapp.com/booking/${bookingId}`)
       .then((res) => res.json())
       .then((data) => setBooking(data));
   }, [bookingId]);
@@ -35,7 +35,7 @@ const OfficeDelivery = () => {
     officeBookings.tracking = tracking;
     // officeBookings.bookingDate = bookingDate;
     // deliveryDate.bookingDate = bookingDate;
-    fetch("http://localhost:5000/officeBookings", {
+    fetch("https://infinite-headland-54248.herokuapp.com/officeBookings", {
       method: "POST",
       headers: {
         "content-type": "application/json",

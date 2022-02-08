@@ -17,7 +17,9 @@ const UserDashboard = () => {
   const [bookings, setBookings] = useState([]);
   const { user } = useAuth();
   useEffect(() => {
-    fetch(`http://localhost:5000/officeBookings?email=${user?.email}`)
+    fetch(
+      `https://infinite-headland-54248.herokuapp.com/officeBookings?email=${user?.email}`
+    )
       .then((res) => res.json())
       .then((data) => setBookings(data));
   }, [user?.email]);
@@ -25,9 +27,12 @@ const UserDashboard = () => {
   const handleDeleteBooking = (id) => {
     const procced = window.confirm("Confirm Delete");
     if (procced) {
-      fetch(`http://localhost:5000/officeBookings/${id}`, {
-        method: "DELETE",
-      })
+      fetch(
+        `https://infinite-headland-54248.herokuapp.com/officeBookings/${id}`,
+        {
+          method: "DELETE",
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           if (data.deletedCount > 0) {

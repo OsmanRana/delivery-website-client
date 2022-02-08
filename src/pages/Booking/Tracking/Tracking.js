@@ -5,14 +5,16 @@ import { useEffect } from "react";
 
 const Tracking = () => {
   const [customerTracking, setCustomerTracking] = useState();
-  const [bookingStatus, setBookingStatus] = useState([])
+  const [bookingStatus, setBookingStatus] = useState([]);
   const handleOnBlur = (e) => {
     const customerTracking = e.target.value;
     setCustomerTracking(customerTracking);
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/officeBookings/tracking?tracking=${customerTracking}`)
+    fetch(
+      `https://infinite-headland-54248.herokuapp.com/officeBookings/tracking?tracking=${customerTracking}`
+    )
       .then((res) => res.json())
       .then((data) => console.log(data));
   }, [customerTracking]);
