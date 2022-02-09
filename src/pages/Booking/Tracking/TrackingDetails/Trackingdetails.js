@@ -14,7 +14,8 @@ const Trackingdetails = ({ bookingInfo }) => {
             Service Id: {info._id}
           </Typography>
           <Typography variant="body1" gutterBottom>
-            Status: {info.bookingStatus}
+            Status:{" "}
+            <span style={{ color: "#d21d24", fontWeight: 'bold' }}>{info.bookingStatus}</span>
           </Typography>
           <Typography variant="body1" gutterBottom>
             Name: {info.senderName}

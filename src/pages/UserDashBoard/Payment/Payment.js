@@ -1,10 +1,9 @@
-import { Paper, Typography } from "@mui/material";
+import { Button, Paper, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import useAuth from "../../hooks/useServices/useAuth";
-import UserBookings from "./UserBookings/UserBookings";
+import React from "react";
+import { Link } from "react-router-dom";
 
-const UserDashboard = () => {
-  const { user } = useAuth();
+const Payment = () => {
   return (
     <Box
       sx={{
@@ -36,12 +35,27 @@ const UserDashboard = () => {
           fontWeight="bold"
           sx={{ fontSize: { xs: 18, sm: 36 } }}
         >
-          Welcome {user?.displayName}
+          Please Confirm Payment
         </Typography>
-        <UserBookings></UserBookings>
+        <Typography variant="body1" gutterBottom>
+          Payment method will be added soon
+        </Typography>
+        <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+          <Button
+            onClick={() => alert("Thank you")}
+            sx={{
+              px: 2,
+              color: "#d21d24",
+              display: "block",
+              border: 1,
+            }}
+          >
+            Payment
+          </Button>
+        </Link>
       </Paper>
     </Box>
   );
 };
 
-export default UserDashboard;
+export default Payment;
