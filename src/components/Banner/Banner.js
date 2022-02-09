@@ -5,13 +5,19 @@ import "./Banner.css";
 
 const Banner = () => {
   return (
-    <Container sx={{ mt: { xs: 12, md: 0 } }}>
+    <Container sx={{ mt: { xs: 12, md: 11 } }}>
       <Grid
         container
         spacing={2}
         display="flex"
         alignItems="center"
         justifyContent="space-between"
+        sx={{
+          borderBottom: { xs: 0, md: 64 },
+          borderTop: { xs: 0, md: 64 },
+          borderColor: { md: "#d21d24" },
+          borderRadius: 16,
+        }}
       >
         <Grid item xs={12} md={6}>
           <Typography
@@ -28,9 +34,13 @@ const Banner = () => {
         </Grid>
         <Grid item xs={12} md={6}>
           <img
-            src="https://images.pexels.com/photos/6868266/pexels-photo-6868266.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+            src="/banner.png"
             alt="Delivery Women"
             width="95%"
+            className="bannerImage"
+            style={{
+              marginBottom: "-5px",
+            }}
           />
         </Grid>
       </Grid>
