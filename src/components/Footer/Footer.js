@@ -3,7 +3,8 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import { Container, Typography } from "@mui/material";
 
-const Footer = () => {  
+const Footer = () => {
+  let year = new Date().getFullYear();
   return (
     <Box
       sx={{
@@ -87,8 +88,8 @@ const Footer = () => {
         </Grid>
         <hr />
         <Typography variant="subtitle2" gutterBottom component="div">
-          Copyright © 2022 express delivery. All rights reserved. Privacy Policy
-          Terms and Condition Return Policy
+          Copyright © {year} express delivery. All rights reserved. Privacy
+          Policy Terms and Condition Return Policy
         </Typography>
       </Container>
     </Box>

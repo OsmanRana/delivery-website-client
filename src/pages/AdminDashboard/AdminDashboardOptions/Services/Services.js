@@ -10,7 +10,6 @@ import { Button } from "@mui/material";
 
 const Services = () => {
   const { services } = useServices();
-  console.log(services);
   return (
     <TableContainer sx={{ display: "flex", justifyContent: "center" }}>
       <Table sx={{ maxWidth: 650 }} aria-label="simple table">

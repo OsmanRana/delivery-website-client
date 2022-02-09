@@ -6,7 +6,7 @@ import { Box } from "@mui/system";
 import Bookings from "./Bookings/Bookings";
 import Services from "./Services/Services";
 import AddServices from "./AddService/AddService";
-import MakeAdmin from "./Services/MakeAdmin/MakeAdmin";
+import MakeAdmin from "./MakeAdmin/MakeAdmin";
 
 const AdminDashboardOptions = () => {
   const [alignment, setAlignment] = useState("bookings");

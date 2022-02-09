@@ -34,7 +34,7 @@ const Banner = () => {
         </Grid>
         <Grid item xs={12} md={6}>
           <img
-            src="/banner.png"
+            src="https://i.ibb.co/gFD6rGQ/banner.png"
             alt="Delivery Women"
             width="95%"
             className="bannerImage"

@@ -4,7 +4,6 @@ import React, { useState } from "react";
 
 const MakeAdmin = () => {
   const [addEmail, setEmail] = useState({});
-  console.log(addEmail);
   const handleOnBlur = (e) => {
     const field = e.target.name;
     const value = e.target.value;

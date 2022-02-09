@@ -5,7 +5,6 @@ import { Button } from "@mui/material";
 
 const AddServices = () => {
   const [addService, setAddService] = useState({});
-  console.log(addService);
   const handleOnBlur = (e) => {
     const field = e.target.name;
     const value = e.target.value;
@@ -16,17 +15,19 @@ const AddServices = () => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    // fetch(`https://infinite-headland-54248.herokuapp.com/services`, {
-    //   method: "POST",
-    //   heards: {
-    //     "content-type": "application/json",
-    //   },
-    //   body: JSON.stringify(addService),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log(data);
-    //   });
+    fetch(`https://infinite-headland-54248.herokuapp.com/services`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(addService),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          alert("Service Added");
+        }
+      });
   };
   return (
     <>
