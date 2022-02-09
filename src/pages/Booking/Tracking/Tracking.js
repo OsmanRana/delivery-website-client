@@ -2,10 +2,12 @@ import { Button, Paper, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 import { useEffect } from "react";
+import Trackingdetails from "./TrackingDetails/Trackingdetails";
 
 const Tracking = () => {
   const [customerTracking, setCustomerTracking] = useState();
-  const [bookingStatus, setBookingStatus] = useState([]);
+  const [bookingInfo, setBookingInfo] = useState([]);
+  console.log(bookingInfo);
   const handleOnBlur = (e) => {
     const customerTracking = e.target.value;
     setCustomerTracking(customerTracking);
@@ -16,7 +18,7 @@ const Tracking = () => {
       `https://infinite-headland-54248.herokuapp.com/officeBookings/tracking?tracking=${customerTracking}`
     )
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => setBookingInfo(data));
   }, [customerTracking]);
 
   const handleOnsubmit = (e) => {
@@ -58,7 +60,7 @@ const Tracking = () => {
         <form onSubmit={handleOnsubmit}>
           <TextField
             id="tracking"
-            label="Please enter your tracking number."
+            label="Tracking number."
             type="tracking"
             name="tracking"
             variant="outlined"
@@ -67,6 +69,14 @@ const Tracking = () => {
             onBlur={handleOnBlur}
             sx={{ maxWidth: 500, my: 4 }}
           />
+          {bookingInfo?.length > 0 ? (
+            <Trackingdetails bookingInfo={bookingInfo}></Trackingdetails>
+          ) : (
+            <Typography sx={{ color: "#d21d24" }} variant="caption">
+              Please enter a valid Tracking Number
+            </Typography>
+          )}
+
           <Box
             sx={{
               display: "flex",
@@ -74,6 +84,7 @@ const Tracking = () => {
             }}
           >
             <Button
+              onClick={() => alert(`Loading Data ${customerTracking}`)}
               fullWidth
               type="submit"
               sx={{

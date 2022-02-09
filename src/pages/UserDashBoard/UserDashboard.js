@@ -79,63 +79,59 @@ const UserDashboard = () => {
         >
           Welcome {user?.displayName}
         </Typography>
-        {bookings?.length > 0 &&
-          bookings?.map((booking) => {
-            return (
-              <TableContainer
-                sx={{ display: "flex", justifyContent: "center" }}
-              >
-                <Table sx={{ maxWidth: 650 }} aria-label="simple table">
-                  <TableHead>
-                    <TableRow>
-                      <TableCell>Booking Details</TableCell>
-                      <TableCell align="left">Action</TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    <TableRow
-                      key={booking._id}
-                      sx={{
-                        "&:last-child td, &:last-child th": { border: 0 },
-                      }}
-                    >
-                      <TableCell component="th" scope="row">
-                        <span style={{ wordBreak: "break-all" }}>
-                          Email: {booking.senderEmail}
-                        </span>
-                        <br />
-                        Tracking: {booking.tracking}
-                      </TableCell>
-                      <TableCell component="th" scope="row">
-                        <Button
-                          onClick={() => handleDeleteBooking(booking._id)}
-                          sx={{
-                            px: 2,
-                            color: "#d21d24",
-                            display: "block",
-                            border: 1,
-                          }}
-                        >
-                          Cancel
-                        </Button>
-                        <Button
-                          sx={{
-                            mt: 2,
-                            px: 2,
-                            color: "#d21d24",
-                            display: "block",
-                            border: 1,
-                          }}
-                        >
-                          {booking.bookingStatus}
-                        </Button>
-                      </TableCell>
-                    </TableRow>
-                  </TableBody>
-                </Table>
-              </TableContainer>
-            );
-          })}
+        <TableContainer sx={{ display: "flex", justifyContent: "center" }}>
+          <Table sx={{ maxWidth: 650 }} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell>Booking Details</TableCell>
+                <TableCell align="left">Action</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {bookings?.length > 0 &&
+                bookings?.map((booking) => (
+                  <TableRow
+                    key={booking._id}
+                    sx={{
+                      "&:last-child td, &:last-child th": { border: 0 },
+                    }}
+                  >
+                    <TableCell component="th" scope="row">
+                      <span style={{ wordBreak: "break-all" }}>
+                        Email: {booking.senderEmail}
+                      </span>
+                      <br />
+                      Tracking: {booking.tracking}
+                    </TableCell>
+                    <TableCell component="th" scope="row">
+                      <Button
+                        onClick={() => handleDeleteBooking(booking._id)}
+                        sx={{
+                          px: 2,
+                          color: "#d21d24",
+                          display: "block",
+                          border: 1,
+                        }}
+                      >
+                        Cancel
+                      </Button>
+                      <Button
+                        sx={{
+                          mt: 2,
+                          px: 2,
+                          color: "#d21d24",
+                          display: "block",
+                          border: 1,
+                        }}
+                      >
+                        {booking.bookingStatus}
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
       </Paper>
     </Box>
   );

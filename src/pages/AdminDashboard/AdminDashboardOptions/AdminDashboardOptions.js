@@ -6,6 +6,7 @@ import { Box } from "@mui/system";
 import Bookings from "./Bookings/Bookings";
 import Services from "./Services/Services";
 import AddServices from "./AddService/AddService";
+import MakeAdmin from "./Services/MakeAdmin/MakeAdmin";
 
 const AdminDashboardOptions = () => {
   const [alignment, setAlignment] = useState("bookings");
@@ -33,9 +34,10 @@ const AdminDashboardOptions = () => {
         <ToggleButton value="admin">Make Admin</ToggleButton>
       </ToggleButtonGroup>
       <Box>
-        {alignment === "bookings" && <Bookings></Bookings>}
-        {alignment === "services" && <Services></Services>}
-        {alignment === "addServices" && <AddServices></AddServices>}
+        {alignment === "bookings" && <Bookings />}
+        {alignment === "services" && <Services />}
+        {alignment === "addServices" && <AddServices />}
+        {alignment === "admin" && <MakeAdmin />}
       </Box>
     </Container>
   );

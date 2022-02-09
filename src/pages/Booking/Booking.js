@@ -16,7 +16,7 @@ const OfficeDelivery = () => {
       .then((data) => setBooking(data));
   }, [bookingId]);
 
-  const tracking = (Math.random().toFixed(4) * 10000).toString();
+  const tracking = Math.floor(1000 + Math.random() * 9000).toString();
 
   const handleOnBlur = (e) => {
     const field = e.target.name;
